@@ -1,0 +1,118 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "yasm (64-bit)",
+            "type": "shell",
+            "command": "yasm",
+            "args": [
+                "-g",
+                "dwarf2",
+                "-f",
+                "elf64",
+                "-i",
+                "${fileDirname}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.o",
+                "${file}"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "focus": true,
+                "panel": "dedicated",
+                "reveal": "silent",
+                "clear": true
+            }
+        },
+        {
+            "label": "ld (64-bit)",
+            "type": "shell",
+            "command": "ld",
+            "args": [
+                "-m",
+                "elf_x86_64",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.bin",
+                "${fileDirname}/${fileBasenameNoExtension}.o"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "focus": true,
+                "panel": "dedicated",
+                "reveal": "silent",
+                "clear": true
+            }
+        },
+        {
+            "label": "build (64-bit)",
+            "runOptions": {
+                "runOn": "default"
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "yasm (64-bit)",
+                "ld (64-bit)"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "yasm (32-bit)",
+            "type": "shell",
+            "command": "yasm",
+            "args": [
+                "-g",
+                "dwarf2",
+                "-f",
+                "elf32",
+                "-i",
+                "${fileDirname}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.o",
+                "${file}"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "focus": true,
+                "panel": "dedicated",
+                "reveal": "silent",
+                "clear": true
+            }
+        },
+        {
+            "label": "ld (32-bit)",
+            "type": "shell",
+            "command": "ld",
+            "args": [
+                "-m",
+                "elf_i386",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.bin",
+                "${fileDirname}/${fileBasenameNoExtension}.o"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "focus": true,
+                "panel": "dedicated",
+                "reveal": "silent",
+                "clear": true
+            }
+        },
+        {
+            "label": "build (32-bit)",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "yasm (32-bit)",
+                "ld (32-bit)"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+    ]
+}

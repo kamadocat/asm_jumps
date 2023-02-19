@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "cppdbg",
+            "request": "launch",
+            "name": "GDB64(yasm)",
+            "cwd": "${fileDirname}",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.bin",
+            "preLaunchTask": "build (64-bit)"
+
+        },
+        {
+            "type": "cppdbg",
+            "request": "launch",
+            "name": "GDB32(yasm)",
+            "cwd": "${fileDirname}",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.bin",
+            "preLaunchTask": "build (32-bit)"
+        },
+    ]
+}
